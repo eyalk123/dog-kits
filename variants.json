@@ -3,44 +3,94 @@
     "id": "bite-reksi",
     "title": "רקסי · נגיסה",
     "model": "bone_tag",
-    "params": { "name": "רקסי", "back_text": "050-1234567", "font": "Rubik:style=Medium" },
-    "colors": { "base": "#f2efe8", "inlay": "#1f6f8b" }
+    "params": {
+      "name": "רקסי",
+      "back_text": "050-1234567",
+      "font": "Rubik:style=Medium"
+    },
+    "colors": {
+      "base": "#f2efe8",
+      "inlay": "#1f6f8b"
+    }
   },
   {
-    "id": "bite-reksi-big",
-    "title": "רקסי · נגיסה גדולה",
+    "id": "bite-reksi-end",
+    "title": "רקסי · נגיסה בקצה",
     "model": "bone_tag",
-    "params": { "name": "רקסי", "back_text": "050-1234567", "font": "Rubik:style=Medium",
-                "bite_r": 5.4, "bite_depth": 0.68, "teeth": 1.45 },
-    "colors": { "base": "#f2efe8", "inlay": "#1f6f8b" }
+    "params": {
+      "name": "רקסי",
+      "back_text": "050-1234567",
+      "font": "Rubik:style=Medium",
+      "bite_r": 3.4,
+      "bite_depth": 1.05,
+      "bite_angle": -10
+    },
+    "colors": {
+      "base": "#f2efe8",
+      "inlay": "#1f6f8b"
+    }
   },
   {
-    "id": "bite-reksi-bottom-left",
-    "title": "רקסי · נגיסה למטה משמאל",
+    "id": "bite-reksi-four",
+    "title": "רקסי · 4 שיניים",
     "model": "bone_tag",
-    "params": { "name": "רקסי", "back_text": "050-1234567", "font": "Rubik:style=Medium",
-                "bite_corner": [-1, -1] },
-    "colors": { "base": "#f2efe8", "inlay": "#1f6f8b" }
+    "params": {
+      "name": "רקסי",
+      "back_text": "050-1234567",
+      "font": "Rubik:style=Medium",
+      "bite_r": 3.0,
+      "bites": 4,
+      "bite_depth": 1.0,
+      "bite_curve": -0.05,
+      "bite_angle": 35,
+      "bite_spacing": 1.4
+    },
+    "colors": {
+      "base": "#f2efe8",
+      "inlay": "#1f6f8b"
+    }
   },
   {
     "id": "classic-reksi",
-    "title": "רקסי · עצם רגילה (להשוואה)",
+    "title": "רקסי · בלי נגיסה (להשוואה)",
     "model": "bone_tag",
-    "params": { "name": "רקסי", "back_text": "050-1234567", "font": "Rubik:style=Medium", "bite": false },
-    "colors": { "base": "#f2efe8", "inlay": "#1f6f8b" }
+    "params": {
+      "name": "רקסי",
+      "back_text": "050-1234567",
+      "font": "Rubik:style=Medium",
+      "bite": false
+    },
+    "colors": {
+      "base": "#f2efe8",
+      "inlay": "#1f6f8b"
+    }
   },
   {
     "id": "bite-luna",
     "title": "Luna · נגיסה · Heebo",
     "model": "bone_tag",
-    "params": { "name": "Luna", "back_text": "052-7654321", "font": "Heebo:style=Medium" },
-    "colors": { "base": "#f4b6c2", "inlay": "#3a2e39" }
+    "params": {
+      "name": "Luna",
+      "back_text": "052-7654321",
+      "font": "Heebo:style=Medium"
+    },
+    "colors": {
+      "base": "#f4b6c2",
+      "inlay": "#3a2e39"
+    }
   },
   {
     "id": "bite-long-name",
     "title": "צ'ופצ'יק · נגיסה · מעוגל",
     "model": "bone_tag",
-    "params": { "name": "צ'ופצ'יק", "back_text": "054-0000000", "font": "DK Round:style=Regular" },
-    "colors": { "base": "#2b2d42", "inlay": "#f6bd60" }
+    "params": {
+      "name": "צ'ופצ'יק",
+      "back_text": "054-0000000",
+      "font": "DK Round:style=Regular"
+    },
+    "colors": {
+      "base": "#2b2d42",
+      "inlay": "#f6bd60"
+    }
   }
 ]

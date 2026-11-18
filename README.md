@@ -20,9 +20,9 @@ plus a browser viewer for reviewing every model.
 - 45 × 26.4 × 3.6 mm by default. A tab on top holds a 4 mm ring hole, so the whole bone is free for the name.
 - Front: the name, centred, plus an outline 1.4 mm in from the edge. Both are **raised 0.6 mm (3 layers at 0.2 mm)** in a second colour.
 - Back: phone number, mirrored and **inlaid flush**, because it rubs against the dog.
-- **Bite** (`bite = true` by default): a bite with tooth marks taken out of one lobe. The outline follows it with a smooth arc.
-  `bite_corner` picks the lobe (`[1, 1]` = top right), and `bite_r`, `bite_depth`, `teeth` and `tooth_spacing` set its size and look.
-  Slivers thinner than `min_feature` (0.8 mm) are removed so nothing fragile is printed.
+- **Bite** (`bite = true` by default): a row of overlapping round tooth marks cut from one lobe, like a cartoon bite out of a cookie.
+  The outline is cut where the bite took it. `bite_corner` picks the lobe (`[1, 1]` = top right), `bite_angle` the spot on it,
+  and `bites`, `bite_r`, `bite_spacing`, `bite_depth` and `bite_curve` set the marks. Slivers under `min_feature` (0.8 mm) are removed.
 - Fonts (`font` parameter): `Rubik:style=Medium` (default), `Heebo:style=Medium`, `DK Round:style=Regular`.
 - Hebrew is shaped right to left automatically. `build.py` measures the rendered text and picks the largest size that fits inside the outline, up to `max_text_height` (6.5 mm).
 
