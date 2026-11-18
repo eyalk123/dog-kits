@@ -26,6 +26,16 @@ length = 45;
 width = 24;
 thickness = 3.0;
 
+/* [Bite] */
+bite = true;              // a bite taken out of one lobe, with tooth marks
+bite_corner = [1, 1];     // which lobe: [x, y] signs, [1, 1] = top right
+bite_r = 4.4;             // radius of the bite
+bite_depth = 0.55;        // how deep into the lobe: 0 = just touches, 1 = to its centre
+teeth = 1.3;              // radius of each tooth mark
+tooth_spacing = 2.5;      // distance between tooth marks, in tooth radii
+bite_angle = 22;          // direction the bite comes from, degrees from horizontal
+min_feature = 0.8;        // slivers thinner than about this are removed
+
 /* [Ring tab] */
 tab_d = 9;                // outer diameter of the tab
 tab_rise = 3.2;           // how far the tab's centre sits above the bone's top edge
@@ -74,13 +84,39 @@ back_h = bar_h - 2 * 1.2;
 function fit_size(s, avail_w, avail_h, cap) =
     min(cap, avail_h / 0.95, avail_w / (char_width * max(len(s), 1)));
 
-module bone_2d() {
+module plain_bone_2d() {
     offset(delta = -fillet) offset(r = fillet)
     union() {
         square([2 * lobe_x, bar_h], center = true);
         for (sx = [-1, 1], sy = [-1, 1])
             translate([sx * lobe_x, sy * lobe_y]) circle(lobe_r);
     }
+}
+
+// A bite: a disc whose rim is a row of small overlapping circles (tooth marks).
+bite_dir = [bite_corner[0] * cos(bite_angle), bite_corner[1] * sin(bite_angle)];
+bite_c = [bite_corner[0] * lobe_x, bite_corner[1] * lobe_y]
+         + bite_dir * (lobe_r + bite_r * (1 - 2 * bite_depth));
+module bite_2d(with_teeth = true) {
+    n = max(6, floor(360 / (tooth_spacing * teeth / (bite_r + teeth) * 180 / PI)));
+    translate(bite_c) union() {
+        circle(bite_r);
+        if (with_teeth)
+            for (i = [0 : n - 1]) rotate(i * 360 / n) translate([bite_r, 0]) circle(teeth, $fn = 32);
+    }
+}
+
+// with_teeth = false gives a smooth arc instead of the tooth marks, so the
+// outline follows the bite without wobbling.
+module bone_2d(with_teeth = true) {
+    if (bite)
+        offset(r = min_feature / 2) offset(r = -min_feature / 2)   // drop thin slivers
+        difference() {
+            plain_bone_2d();
+            if (with_teeth) bite_2d(true);
+            else offset(delta = teeth * 0.7) bite_2d(false);
+        }
+    else plain_bone_2d();
 }
 
 // Tab joined to the bar with a smooth neck.
@@ -97,8 +133,8 @@ module tab_2d() {
 
 module outline_2d() {
     difference() {
-        offset(r = -outline_gap) bone_2d();
-        offset(r = -inset) bone_2d();
+        offset(r = -outline_gap) bone_2d(false);
+        offset(r = -inset) bone_2d(false);
     }
 }
 
