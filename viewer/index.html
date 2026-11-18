@@ -157,8 +157,21 @@ function setView(view) {
   controls.update();
 }
 
+// "x.stl" loads directly. "x.json#part" reads base64 STL from a JSON bundle
+// (scripts/bundle_artifact.py), for hosts that won't serve .stl files.
+const bundles = new Map();
 async function loadGeometry(file) {
-  if (!cache.has(file)) cache.set(file, loader.loadAsync("out/" + file));
+  if (!cache.has(file)) {
+    const [path, part] = file.split("#");
+    cache.set(file, part
+      ? (async () => {
+          if (!bundles.has(path)) bundles.set(path, fetch("out/" + path).then(r => r.json()));
+          const b64 = (await bundles.get(path))[part];
+          const bytes = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+          return loader.parse(bytes.buffer);
+        })()
+      : loader.loadAsync("out/" + file));
+  }
   return cache.get(file);
 }
 
@@ -186,7 +199,10 @@ async function show(id) {
   statusEl.hidden = true;
 
   const p = v.params, s = v.sizes || {};
-  const links = Object.entries(v.files).map(([part, f]) => `<a href="out/${esc(f)}" download>${part}.stl</a>`).join(" · ");
+  const downloadable = Object.values(v.files).every(f => !f.includes("#"));
+  const links = downloadable
+    ? Object.entries(v.files).map(([part, f]) => `<a href="out/${esc(f)}" download>${part}.stl</a>`).join(" · ")
+    : `<span style="color:var(--muted)">ב-GitHub Pages</span>`;
   const info = document.getElementById("info");
   info.hidden = false;
   info.innerHTML = `<dl>

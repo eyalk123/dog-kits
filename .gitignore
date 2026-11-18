@@ -3,3 +3,4 @@ __pycache__/
 *.stl
 !assets/**/*.stl
 .DS_Store
+dist/
