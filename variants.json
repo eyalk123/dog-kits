@@ -1,23 +1,37 @@
 [
   {
-    "id": "bone-reksi",
-    "title": "עצם — רקסי",
+    "id": "bone-reksi-rubik",
+    "title": "רקסי · Rubik",
     "model": "bone_tag",
-    "params": { "name": "רקסי", "back_text": "050-1234567" },
+    "params": { "name": "רקסי", "back_text": "050-1234567", "font": "Rubik:style=Medium" },
+    "colors": { "base": "#f2efe8", "inlay": "#1f6f8b" }
+  },
+  {
+    "id": "bone-reksi-heebo",
+    "title": "רקסי · Heebo",
+    "model": "bone_tag",
+    "params": { "name": "רקסי", "back_text": "050-1234567", "font": "Heebo:style=Medium" },
+    "colors": { "base": "#f2efe8", "inlay": "#1f6f8b" }
+  },
+  {
+    "id": "bone-reksi-round",
+    "title": "רקסי · מעוגל",
+    "model": "bone_tag",
+    "params": { "name": "רקסי", "back_text": "050-1234567", "font": "DK Round:style=Regular" },
     "colors": { "base": "#f2efe8", "inlay": "#1f6f8b" }
   },
   {
     "id": "bone-luna",
-    "title": "Bone — Luna",
+    "title": "Luna · Rubik",
     "model": "bone_tag",
-    "params": { "name": "Luna", "back_text": "052-7654321" },
+    "params": { "name": "Luna", "back_text": "052-7654321", "font": "Rubik:style=Medium" },
     "colors": { "base": "#f4b6c2", "inlay": "#3a2e39" }
   },
   {
     "id": "bone-long-name",
-    "title": "עצם — שם ארוך",
+    "title": "צ'ופצ'יק · שם ארוך",
     "model": "bone_tag",
-    "params": { "name": "צ'ופצ'יק", "back_text": "054-0000000" },
+    "params": { "name": "צ'ופצ'יק", "back_text": "054-0000000", "font": "Rubik:style=Medium" },
     "colors": { "base": "#2b2d42", "inlay": "#f6bd60" }
   }
 ]

@@ -17,10 +17,11 @@ plus a browser viewer for reviewing every model.
 ## Models
 
 ### `bone_tag`: bone-shaped name tag
-- 45 × 24 × 3.2 mm by default, with a 4.5 mm ring hole.
-- The front has the name and the back has a phone number (mirrored, so it reads correctly when the tag is turned over).
-- Both are **inlaid flush, 0.6 mm deep (3 layers at 0.2 mm)**, in a second colour. They don't wear like raised text.
-- Hebrew is shaped right to left automatically. `build.py` measures the rendered text and picks the largest size that fits.
+- 45 × 26.4 × 3.6 mm by default. A tab on top holds a 4 mm ring hole, so the whole bone is free for the name.
+- Front: the name, centred, plus an outline 1.4 mm in from the edge. Both are **raised 0.6 mm (3 layers at 0.2 mm)** in a second colour.
+- Back: phone number, mirrored and **inlaid flush**, because it rubs against the dog.
+- Fonts (`font` parameter): `Rubik:style=Medium` (default), `Heebo:style=Medium`, `DK Round:style=Regular`.
+- Hebrew is shaped right to left automatically. `build.py` measures the rendered text and picks the largest size that fits inside the outline, up to `max_text_height` (6.5 mm).
 
 ## Working locally
 
@@ -41,4 +42,6 @@ Every push to `main` runs `.github/workflows/pages.yml`, which renders the model
 One-time setup: **Settings → Pages → Source: GitHub Actions**.
 
 ## Licences
-Open Sans (bundled in `assets/fonts/`) is under the SIL Open Font License, so it may be used in commercial products. See `assets/fonts/OFL-OpenSans.txt`.
+All bundled fonts are under the SIL Open Font License (OFL-*.txt in `assets/fonts/`), which allows commercial products.
+Each file merges the Hebrew and Latin subsets of the original font into one TTF.
+"DK Round" is Varela Round under a different name: the OFL forbids keeping a Reserved Font Name on a modified font.
