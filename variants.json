@@ -1,0 +1,23 @@
+[
+  {
+    "id": "bone-reksi",
+    "title": "עצם — רקסי",
+    "model": "bone_tag",
+    "params": { "name": "רקסי", "back_text": "050-1234567" },
+    "colors": { "base": "#f2efe8", "inlay": "#1f6f8b" }
+  },
+  {
+    "id": "bone-luna",
+    "title": "Bone — Luna",
+    "model": "bone_tag",
+    "params": { "name": "Luna", "back_text": "052-7654321" },
+    "colors": { "base": "#f4b6c2", "inlay": "#3a2e39" }
+  },
+  {
+    "id": "bone-long-name",
+    "title": "עצם — שם ארוך",
+    "model": "bone_tag",
+    "params": { "name": "צ'ופצ'יק", "back_text": "054-0000000" },
+    "colors": { "base": "#2b2d42", "inlay": "#f6bd60" }
+  }
+]

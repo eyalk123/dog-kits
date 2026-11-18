@@ -1,0 +1,5 @@
+viewer/out/
+__pycache__/
+*.stl
+!assets/**/*.stl
+.DS_Store
